@@ -1,0 +1,31 @@
+def solution(lottos, win_nums):
+    count=0
+    zeroes=0
+    for i in lottos:
+        if i in win_nums:
+            count+=1
+        if i==0:
+            zeroes+=1
+    answer=[]
+    
+    if count==2:
+        answer=[5-zeroes,5]
+    elif count==3:
+        answer=[4-zeroes,4]
+    elif count==4:
+        answer=[3-zeroes,3]
+    elif count==5:
+        answer=[2-zeroes,2]
+    elif count==6:
+        answer=[1,1]
+    elif count==1:
+        answer=[6-zeroes,6]
+    elif count==0:
+        if zeroes==0:
+            answer=[6,6]
+        elif zeroes==1:
+            answer=[6,6]
+        else:
+            answer=[7-zeroes,6]
+
+    return answer
