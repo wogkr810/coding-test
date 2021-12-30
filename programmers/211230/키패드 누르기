@@ -1,0 +1,41 @@
+def dist(pre_l,pre_r,pos,temp,hd):
+    dist_l=abs(pos[temp][0]-pos[pre_l][0])+abs(pos[temp][1]-pos[pre_l][1])
+    dist_r=abs(pos[temp][0]-pos[pre_r][0])+abs(pos[temp][1]-pos[pre_r][1])
+    if dist_l==dist_r:
+        if hd=="right":
+            return 'R'
+        elif hd=="left":
+            return 'L'
+    elif dist_l>dist_r:
+        return 'R'
+    elif dist_l<dist_r:
+        return 'L'
+
+def solution(numbers, hand):
+    position={1:(0,0),2:(0,1),3:(0,2),4:(1,0),5:(1,1),6:(1,2),7:(2,0),8:(2,1),9:(2,2),
+             '*':(3,0),0:(3,1),'#':(3,2)}
+    left=[1,4,7]
+    right=[3,6,9]
+    tmp=-100
+    l_tmp='*'
+    r_tmp='#'
+    res=''
+    k=0
+    for i in range(len(numbers)):
+        tmp=numbers[i]
+        if tmp in left:
+            l_tmp=tmp
+            res=res+'L'
+        elif tmp in right:
+            r_tmp=tmp
+            res=res+'R'
+        else:
+            k=dist(l_tmp,r_tmp,position,tmp,hand)
+            if k=='L':
+                l_tmp=tmp
+                res=res+'L'
+            elif k=='R':
+                r_tmp=tmp
+                res=res+'R'
+            
+    return res
