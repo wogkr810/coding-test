@@ -1,0 +1,24 @@
+from itertools import combinations
+import math
+
+def find_sosu(n):
+    for i in range(2,int(math.sqrt(n))+1):
+        if n%i==0:
+            return False
+    return True
+
+def solution(nums):
+    sosu_list=list(combinations(nums,3))
+    sosu_sum_list=[]
+    
+    for j in range(len(sosu_list)):
+        sosu_sum_list.append(sum(sosu_list[j]))
+        
+    # sosu_sum_list=list(set(sosu_sum_list))  <<-오히려 넣으면 안됨
+    
+    answer = 0
+    for i in range(len(sosu_sum_list)):
+        if find_sosu(sosu_sum_list[i])==True:
+            answer+=1
+            
+    return answer
