@@ -1,0 +1,12 @@
+def solution(nums):
+    pick=len(nums)/2
+    unique_nums=list(set(nums))
+    answer = 0
+    print(unique_nums)
+    
+    if len(unique_nums)>=pick:
+        answer=pick
+    else:
+        answer=len(unique_nums)
+    
+    return answer
