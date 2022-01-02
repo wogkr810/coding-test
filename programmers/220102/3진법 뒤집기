@@ -1,0 +1,19 @@
+def find_n_jinsu(n, q):
+    rev_base = ''
+
+    while n > 0:
+        n, mod = divmod(n, q)
+        rev_base += str(mod)
+
+    return rev_base[::-1] 
+
+def solution(n):
+    answer = find_n_jinsu(n,3)
+    answer=answer[::-1]
+    answer=int(answer)
+    answer=str(answer)
+    sum=0
+    for i in range(len(answer)):
+        sum+=int(answer[-i-1])*(3**i)
+    
+    return sum
