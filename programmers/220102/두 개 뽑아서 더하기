@@ -1,0 +1,11 @@
+from itertools import combinations
+
+def solution(numbers):
+    hubo_list=list(combinations(numbers,2))
+    hubo_sum_list=[]
+    for i in range(len(hubo_list)):
+        hubo_sum_list.append(sum(hubo_list[i]))
+    hubo_sum_list=list(set(hubo_sum_list))
+    hubo_sum_list.sort()
+    answer = hubo_sum_list
+    return answer
