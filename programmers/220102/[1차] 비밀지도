@@ -1,3 +1,6 @@
+# bin을 통해 2진수 바로 변환 가능
+# rjust ljust zfill 공백 채워 줌
+
 def find_binary_5digit(n,k):
     rev_base = ''
     copy_rev_base=''
