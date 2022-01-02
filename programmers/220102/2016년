@@ -1,0 +1,8 @@
+import calendar
+
+def solution(a, b):
+    week_list = ["MON","TUE","WED","THU","FRI","SAT","SUN"]
+    weekday=calendar.weekday(2016,a,b)
+    
+    answer = week_list[weekday]
+    return answer
