@@ -1,0 +1,29 @@
+def find_binary_5digit(n,k):
+    rev_base = ''
+    copy_rev_base=''
+    while n > 0:
+        n, mod = divmod(n, 2)
+        rev_base += str(mod) 
+    if len(rev_base)==k:
+        return rev_base[::-1]
+    else:
+        copy_rev_base=rev_base[::-1]
+        for i in range(k):
+            copy_rev_base='0'+copy_rev_base
+            if len(copy_rev_base)==k:
+                break
+        return copy_rev_base
+
+def solution(n, arr1, arr2):
+    for i in range(n):
+        arr1[i]=find_binary_5digit(arr1[i],n)
+        arr2[i]=find_binary_5digit(arr2[i],n)
+    res=['']*n
+    for i in range(n):
+        for j in range(n):
+            if arr1[i][j]=='0' and arr2[i][j]=='0':
+                res[i]=res[i]+" "
+            else:
+                res[i]=res[i]+"#"
+    answer = res
+    return answer
