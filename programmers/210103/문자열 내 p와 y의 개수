@@ -1,0 +1,17 @@
+# 간결하게 하려면 str.count() 쓰면 됨 , 둘다 0개인것도 어차피 갯수 같은거니 조건 추가 필요 x
+
+def solution(s):
+    s=s.lower()
+    p_count=0
+    y_count=0
+    for i in s:
+        if i=='p':
+            p_count+=1
+        elif i=='y':
+            y_count+=1
+    if p_count==y_count:
+        return True
+    elif p_count!=y_count:
+        return False
+    elif p_count==0 and y_count==0:
+        return True
