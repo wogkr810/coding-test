@@ -1,0 +1,11 @@
+def solution(n):
+    recursive='수박'
+    if n%2==0:
+        return recursive*int(n/2)
+    else:
+        return recursive*int(n//2)+"수"
+    
+# 베스트 풀이 :
+# def water_melon(n):
+#     s = "수박" * n
+#     return s[:n]
