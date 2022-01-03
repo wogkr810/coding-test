@@ -1,0 +1,10 @@
+# 1: 무지성 , 2:format , 3: f-string(국가수리과학연구소 최고)
+
+def solution(seoul):
+    # where_kim=seoul.index("Kim")
+    # answer='김서방은 '+str(where_kim)+'에 있다'
+    # return answer
+    
+    # return '김서방은 {}에 있다'.format(seoul.index("Kim"))
+    
+    return f'김서방은 {seoul.index("Kim")}에 있다'
