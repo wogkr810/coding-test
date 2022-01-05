@@ -1,0 +1,4 @@
+#내가 풀었지만 제일 깔끔한 풀이인 듯
+
+def solution(x, n):
+    return [x*(i+1) for i in range(n)]
