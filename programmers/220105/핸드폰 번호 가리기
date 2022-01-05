@@ -1,0 +1,4 @@
+#rjust 말고도 len(p_n)-4 만큼 "*" 곱해서 넣어도 괜찮을 듯
+
+def solution(phone_number):
+    return phone_number[-4:].rjust(len(phone_number),'*')
