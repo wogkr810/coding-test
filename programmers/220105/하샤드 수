@@ -1,0 +1,6 @@
+# 위에거 : 내가 한 거
+# 밑에거 : 다른사람 풀이 흡수
+
+def solution(x):
+    # return True if x%sum(list(map(int,list(str(x)))))==0 else False
+    return x%sum([int(i) for i in str(x)])==0
