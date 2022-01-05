@@ -1,0 +1,14 @@
+# 위 : 내가 한 것
+# 밑 : zip 이용
+# numpy 도 가능
+# 체크 : arr1과 arr2에 [[1,2],[1,2,3]] 처럼 꼭 같은 형식의 배열이 있을 것 같지않아서 arr1[i]로 했는데 다른 풀이들은 전부 arr1[0]으로 함 .. 뭐가 맞는 진 모름
+
+def solution(arr1, arr2):
+    copy_list=arr1.copy()
+    for i in range(len(arr1)):
+        for j in range(len(arr1[i])):
+            copy_list[i][j]+=arr2[i][j]
+    return copy_list
+
+# def solution(arr1,arr2):
+#     return [[(c+d) for c,d in zip(a,b)] for a,b in zip(arr1,arr2)]
