@@ -1,0 +1,29 @@
+# 테스트케이스는 통과했었지만 히든케이스 통과 x -> 테스트케이스에 대문자가 나올수도? -> elif 추가
+# 이후에 필요없는 반복문 보여서 주석처리하고 간결화-> 됐지만 틀림
+# 문제가 이상한 듯? 하나 이상의 공백문자로 구분되어있다길래, 직접 try      hello 로해서 확인했는데, 테스트케이스에서는 하나 이상의 공백을 보존하는 듯(질문하기에서 봄)
+
+def solution(s):
+    s=s.split(" ")
+    new_s=[]
+    
+    for i in range(len(s)):
+        new_s.append(list(s[i]))
+        
+    for i in range(len(new_s)):
+        for j in range(len(new_s[i])):
+            if j%2==0:
+                new_s[i][j]=new_s[i][j].upper()
+            elif j%2==1:
+                new_s[i][j]=new_s[i][j].lower()
+        new_s[i]=''.join(new_s[i])
+    
+    answer=' '.join(new_s)
+    print(answer)
+    return answer
+    
+    
+    # print(new_s)
+    # sub_list=[]
+    # for i in range(len(new_s)):
+    #     sub_list.append(''.join(new_s[i]))
+    # answer=' '.join(sub_list)
