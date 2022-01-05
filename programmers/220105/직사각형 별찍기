@@ -1,0 +1,13 @@
+# strip은 공백제거( 밑의 원문코드)
+# star 선언안하고 그냥 print("*"*a)*b 해도 됨
+
+a,b=map(int,input().split())
+for i in range(b):
+    star=''
+    for j in range(a):
+        star='*'+star
+    print(star)
+
+
+# a, b = map(int, input().strip().split(' '))
+# print(a + b)
