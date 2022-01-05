@@ -1,0 +1,11 @@
+# sort는 str도 가능 굳이 중간에 불필요없는거 있을 필요 ㄴㄴ
+
+def solution(n):
+    # n=list(str(n))
+    # n=list(map(int,n))
+    # n=sorted(n,reverse=True)
+    # n=list(map(str,n))
+    # n=''.join(n)
+    # n=int(n)
+    
+    return int(''.join(sorted(list(str(n)),reverse=True)))
