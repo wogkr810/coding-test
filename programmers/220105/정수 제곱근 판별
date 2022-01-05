@@ -1,0 +1,16 @@
+# is_integer 내장함수 쓰면 훨씬 빠름 ->is_integer함수는 실수만 input가능
+
+def solution(n):
+    if (float(n**0.5)).is_integer():
+        return (n**0.5+1)**2
+    return -1
+#--------------------------------------------------------------------------
+# def isint(n):
+#     if int(n)==n:
+#         return True
+#     return False
+
+# def solution(n):
+#     if isint(n**0.5):
+#         return (n**0.5+1)**2
+#     return -1
