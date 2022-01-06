@@ -1,0 +1,45 @@
+# strip,rstrip,lstrip : 양끝공백제거,오른쪽공백제거,왼쪽공백제거
+# 이 문제 또한 공백이 변수 -> 공백개수 유지해야함
+# capitalize() -> 문자열의 첫글자는 대문자로, 나머지는 소문자로 변환
+# title() -> 내장함수지만 한 줄로 출력 가능 /공백기준 첫글자만 대문자
+#------------전 문자랑 다음 문자 비교하여 왼쪽에 공백있으면 다음문자 대문자로----------
+def solution(s):
+    s_cap=s.capitalize()
+    s_cap=list(s_cap)
+    for i in range(len(s_cap)-1):
+        if s_cap[i]==" " and s_cap[i+1]!=" ":
+            s_cap[i+1]=s_cap[i+1].upper()
+    return ''.join(s_cap)
+#-------위에것과 같은 시도----------------------
+#     answer=''
+#     answer=s[0].upper()
+#     for i in range(1,len(s)-1):
+#         if s[i]==" " and s[i+1]!=" ":
+#             answer=answer+s[i+1].upper()
+#         elif s[i]
+#         else:
+#             answer=answer+s[i]
+#     print('k'.islower())
+    # s_split=s.split()
+    # for i in range(len(s_split)):
+    #     s_split[i]=s_split[i][0].upper()+s_split[i][1:].lower()
+    # print(s_split)
+    # print(s)
+    
+#----------------------첫글자 isnumric 의미없음, 어차피 숫자면 변환 ㄴ-----------
+#----------------------공백 여러개일 경우 불가능-------------------
+    # s=s.split()
+    # for i in range(len(s)):
+    #     # if s[i][0].isnumeric():
+    #     #     continue
+    #     # if not s[i][0].isnumeric():
+    #     s[i]=s[i][0].upper()+s[i][1:].lower()
+    # print(' '.join(s))
+        # if s_split[i][0]==" ":
+        #     answer=answer+s_split[i][0]+s_split[i][1:].lower()+' '
+        # elif s_split[i][0].isnumeric():
+        #     answer=answer+s_split[i][0]+s_split[i][1:].lower()+' '
+        # else:
+        #     answer=answer+s_split[i][0].upper()+s_split[i][1:].lower()+' '
+        
+    # return answer.rstrip()
