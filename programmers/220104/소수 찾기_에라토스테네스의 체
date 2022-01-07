@@ -1,0 +1,33 @@
+# 1. 소수 함수 만들고(n **0.5), for문 돌면서 개수 체크(n) -> n**1.5 ->안됨
+# 2. for i , for j -> i 증가하면서 n개만큼 체크 -> n**2 안됨
+# 3. 에라토스테네스의 체 -> 단순히 소수 하나찾는 것도 루트 n이지만, 이건 루트 n으로 소수 들 리스트 가능
+# 대신 에라토스테네스의 체는 메모리 할당량 상당함(실행만 해도 확연히 확인 가능)
+
+import math
+
+def solution(n):
+    sosu_list=[True]*(n+1)
+    for i in range(2,int(math.sqrt(n))+1):
+        if sosu_list[i]:
+            for j in range(i+i,n+1,i):
+                sosu_list[j]=False
+    return sum(sosu_list)-2
+            
+
+
+
+# import math
+
+# def sosu(n):
+#     for i in range(2,int(math.sqrt(n))+1):
+#         if n%i==0:
+#             return False
+#     else:
+#         return True
+
+# def solution(n):
+#     count=0
+#     for i in range(2,n+1):
+#         if sosu(i):
+#             count+=1
+#     return count
