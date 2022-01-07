@@ -1,0 +1,47 @@
+#3차시도 : 1차시도와 같은 아이디어에 n_sum>n일 경우 계산할 필요가없음.당연한건데 늘 해왔어서 그냥 넘어간 듯
+
+def solution(n):
+    n_list=[i for i in range(n+1)]
+    answer=0
+    for i in range(n+1):
+        n_list.pop(0)
+        n_sum=0
+        for j in range(len(n_list)):
+            n_sum=n_sum+n_list[j]
+            if n_sum==n:
+                answer+=1
+                break
+            if n_sum>n:
+                break
+            
+    return answer
+    
+
+# ----2차시도 : 누적합 리스트 만들어서 슬라이딩윈도우--------------------------------------  
+#     from itertools import accumulate    
+#     n_list=[i for i in range(n+1)]
+#     n_acclist=list(accumulate(n_list))
+#     n_acclist.sort(reverse=True)
+#     answer=0
+#     for i in range(1,len(n_acclist)):
+#         for j in range(len(n_acclist)):
+#             if (n_acclist[j]-n_acclist[j+i])==n:
+#                 answer+=1
+#             if (i+j)==(len(n_acclist)-1):
+#                 break
+#     return answer
+    
+    
+#-------1차시도: 2중 for문 O(n^2)로 list 원소 하나씩 지우면서 더했을때 맞으면 count+=1-------#-------답은 맞으나 효율성 전부 다 틀림---------------------------------------------------
+#     n_list=[i for i in range(n+1)]
+#     answer=0
+#     for i in range(n+1):
+#         n_list.pop(0)
+#         n_sum=0
+#         for j in range(len(n_list)):
+#             n_sum=n_sum+n_list[j]
+#             if n_sum==n:
+#                 answer+=1
+#                 break
+            
+#     return answer
