@@ -1,0 +1,18 @@
+# 한 줄로 짜려고 노력함
+# f string으로 하면 더 빠름
+
+def solution(s):
+    s_sort=list(map(int,s.split()))
+    return ' '.join([str(min(s_sort)),str(max(s_sort))])
+
+#--------------------시도들-----------------------------------------
+    # kk=[min(s_sort),max(s_sort)]
+    # # answer=' '.join([min(s_sort),max(s_sort)])
+    # print(' '.join(str(kk)))
+    # print(answer)
+    
+    
+    # k=' '.join([min(s_sort),max(s_sort)])
+    # print(k)
+    # answer = ''
+    # return ' '.join([min(list(map(int,s.split()))),max(list(map(int,s.split())))])
