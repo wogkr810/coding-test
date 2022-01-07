@@ -1,0 +1,35 @@
+#아스키코드
+#chr() : 숫자 -> 문자
+#ord() : 문자 -> 숫자
+
+def solution(s, n):
+    alphabet='aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ'
+    list_alphabet=list(alphabet)
+    lena=len(alphabet)
+    
+    answer=[]
+    for i in range(len(s)):
+        if s[i] in list_alphabet:
+            answer.append(list_alphabet.index(s[i]))
+        elif s[i]==' ':
+            answer.append(-1)
+    
+    res=''
+    print(list_alphabet)
+    print(answer)
+    for i in range(len(answer)):
+        if answer[i]==-1:
+            res=res+' '
+        else:
+            res=res+list_alphabet[(answer[i]+2*n)%lena]
+    return res
+    
+#     for i in range(len(answer)):
+#         if answer[i]%2==0:
+#             res.append(list_alphabet[(answer[i]+2*n)%lena])
+#         elif answer[i]%2==1:
+#             res.append(list_alphabet[(answer[i]+2*n)%lena])
+#         elif answer[i]==-1:
+#             res.append('')
+    
+    # print(res)
