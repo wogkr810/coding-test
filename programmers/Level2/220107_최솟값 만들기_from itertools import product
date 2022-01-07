@@ -1,0 +1,28 @@
+# from itertools import product : cartesian product
+# A는 오름차순,B는 내림차순으로 곱하는게 최소일거라고 예상은 했지만,증명이가능한가?
+# 만약 A가 내림차순,B가 오름차순이라면? ->실험해본결과 됨
+# zip이용했으면 더 깔끔했을 듯 ,내꺼를한다면 pop이 아닌 리스트 인덱스 i로하는게 빠를 듯
+# pop도 O(-1)
+
+from itertools import product
+
+def solution(A,B):
+    A.sort()
+    B.sort(reverse=True)
+    sum=0
+    for i in range(len(A)):
+        sum+=A.pop(0)*B.pop(0)
+        if len(A)==0:
+            break
+    return sum
+
+
+#-----------------product함수 실험------------------------
+#     a=list(product(A,B))
+#     print(a)
+#---------------처음 고민했던 일대일함수 대응 알고리즘--------------------
+    # 예시1 번
+    # A기준으로 1,5 / 1,4 / 1,4 있을거임 
+    # 1,5픽 -> 나머지 1 지우고 2,~픽 3개 , 픽 -> 3~1하나 제거 
+    # -> 경우의 수 다 구한후 리스트에 넣고 합이 최소인거 retrun
+    # product설명적기
