@@ -1,0 +1,9 @@
+# 최대한 간결하게 하려다가 오히려 시간 더 늦어지는 듯?
+# bin->2진수로 바꾸고 [2:] 한 것은 0b 지운 것
+# int(수,base) -> base진법인 수를 10진수로 바꿔줌
+# 내가 푼게 제일 나은 듯
+
+def solution(n):
+    for i in range(n+1,1000001):
+        if bin(i)[2:].count('1')==bin(n)[2:].count('1'):
+            return int(bin(i)[2:],2)
