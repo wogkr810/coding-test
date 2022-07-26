@@ -1,7 +1,7 @@
 S=input()
-hubo_list=[]
+hubo_set=set()
 for i in range(len(S)):
     for j in range(1,len(S)+1):
-        hubo_list.append(S[i:i+j])
+        hubo_set.add(S[i:i+j])
 
-print(len(set(hubo_list)))
+print(len(hubo_set))
