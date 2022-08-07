@@ -4,7 +4,7 @@
   - 7문제중 1,2,3 시도 (세문제정도 풀만하다고 느낌)
   - 시간 상 1번만 무지성 for 문 ( 테스트 케이스 23 개중 5개 통과)
  
-- 프로그래머스 (2021.12.29 ~ )
+- 프로그래머스 1차 (2021.12.29 ~ 2022.01.16)
   - 1단계 : 2021.12.29 ~ 2022.
     - 체크 : 소수찾기 / 완주하지 못한 선수 / 실패율 / [1차] 다트 게임
     - 마크다운 : 에라토스테네스의 체, 아스키 코드, 유클리드 호제법
@@ -15,4 +15,8 @@
   - [부스트캠프 AI Tech NLP 9조 MnM 모각코](https://colorful-bug-b35.notion.site/1953015175004297a9c294229d3990c4)
 - 백준 (2022.07.18 ~ )
   - [BaekjoonHub](https://github.com/BaekjoonHub/BaekjoonHub) 사용
-  - [Notion 정리](https://jaehahk.notion.site/516f2136800840acbd6cafa878ffb9ec)
+  - [Notion 정리 : 단계별로 풀어보기](https://jaehahk.notion.site/fffde2327cd742518cb14846179aeb3b)
+  - [Notion 정리 : 알고리즘 분류](https://jaehahk.notion.site/db4af67ca7794783860cef54116aed3c)
+- 프로그래머스 2차 (2022.08.08 ~ )
+  - [BaekjoonHub](https://github.com/BaekjoonHub/BaekjoonHub) 사용
+  - [Notion 정리 : 프로그래머스](https://jaehahk.notion.site/d62d0174e06e4710b8f1a1ee7005931f)
