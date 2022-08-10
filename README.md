@@ -20,3 +20,4 @@
 - 프로그래머스 2차 (2022.08.08 ~ )
   - [BaekjoonHub](https://github.com/BaekjoonHub/BaekjoonHub) 사용
   - [Notion 정리 : 프로그래머스](https://jaehahk.notion.site/d62d0174e06e4710b8f1a1ee7005931f)
+  - [Notion 정리 : 프로그래머스(스터디)](https://jaehahk.notion.site/bae0793f738341fc933e3865f84598ae)
