@@ -17,11 +17,11 @@ location_list
 cnt=0          1        2       3      4        5(답)
 '''
 
-
 from collections import deque
 
 def solution(priorities, location):
     priorities=deque(priorities)
+    #location_list -> enumerate로 개선가능할 듯
     location_list=deque([i for i in range(len(priorities))])
 
     cnt=0
