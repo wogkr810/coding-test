@@ -1,29 +1,28 @@
 def solution(answers):
-    one_list=[1,2,3,4,5]
-    two_list=[2,1,2,3,2,4,2,5]
-    three_list=[3,3,1,1,2,2,4,4,5,5]
-    c_1=0
-    c_2=0
-    c_3=0
+    len_ans = len(answers)
+    
+    one = [1,2,3,4,5] 
+    two = [2,1,2,3,2,4,2,5] 
+    three = [3,3,1,1,2,2,4,4,5,5]
+    
+    div_one = divmod(len_ans,len(one))
+    div_two = divmod(len_ans,len(two))
+    div_three = divmod(len_ans,len(three))
+    
+    one_list = one * div_one[0] + one[:div_one[1]]
+    two_list = two * div_two[0] + two[:div_two[1]]
+    three_list = three * div_three[0] + three[:div_three[1]]
+    
+    res = {1:0 , 2:0 , 3:0}
+    
     for i in range(len(answers)):
-        if answers[i]==one_list[i%5]:
-            c_1+=1
-        if answers[i]==two_list[i%8]:
-            c_2+=1
-        if answers[i]==three_list[i%10]:
-            c_3+=1   
-    result=[c_1,c_2,c_3]
-    mmaaxx=max(result)
-    answer=[]
-    if result.count(mmaaxx)==3:
-        answer=[1,2,3]
-    elif result.count(mmaaxx)==2:
-        for i in range(3):
-            if result[i]==mmaaxx:
-                answer.append(i+1)
-    elif result.count(mmaaxx)==1:
-        for i in range(3):
-            if result[i]==mmaaxx:
-                answer.append(i+1)
-    # print(answer)
-    return answer
+        if answers[i] == one_list[i]:
+            res[1] += 1
+        if answers[i] == two_list[i]:
+            res[2] += 1
+        if answers[i] == three_list[i]:
+            res[3] += 1
+    
+    res = sorted(res.items(), key = lambda x : x[1], reverse=True)
+    
+    return [i[0] for i in res if i[1]==res[0][1]]
