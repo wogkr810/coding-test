@@ -1,13 +1,14 @@
-def solution(arr):
-    jungbok_index_list=[]
-    for i in range(len(arr)-1):
-        if arr[i]==arr[i+1]:
-            jungbok_index_list.append(i)
-    
-    answer=[]
-    bigyo=list(set([i for i in range(len(arr))])-set(jungbok_index_list))
-    
-    for i in bigyo:
-        answer.append(arr[i])
+from collections import deque
 
-    return answer
+def solution(arr):
+    res = []
+    arr = deque(arr)
+    while arr:
+        tmp = arr.popleft()
+        if len(res) == 0:
+            res.append(tmp)
+        elif tmp != res[-1]:
+            res.append(tmp)
+    
+    return res
+        
