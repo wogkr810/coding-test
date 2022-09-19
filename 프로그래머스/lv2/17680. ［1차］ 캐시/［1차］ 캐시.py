@@ -17,7 +17,8 @@ def solution(cacheSize, cities):
         # 있으면 중간 인덱스 제거해야 하니, 우선 index로 찾고 del로 제거
         # remove도 가능하고, deque를 이용하여 인덱스 찾고 로테이션하고 popleft해도됨
         else:
-            del arr[arr.index(tmp)]
+            arr.remove(tmp)
+            # del arr[arr.index(tmp)]
             arr.append(tmp)
             cnt += 1
             
