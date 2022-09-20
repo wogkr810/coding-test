@@ -1,0 +1,20 @@
+def solution(board, moves):
+    res=[]
+    tmp=0
+    count=0
+    for i in range(len(moves)):
+        tmp=moves[i]
+        for j in range(len(board)):
+            if board[j][tmp-1]!=0:
+                res.append(board[j][tmp-1])
+                board[j][tmp-1]=0
+                if len(res)>=2:
+                    if res[-1]==res[-2]:
+                        count+=2
+                        res=res[:-2]
+                break
+
+            
+    
+    answer = count
+    return answer
