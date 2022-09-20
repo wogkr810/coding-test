@@ -1,40 +1,36 @@
-def changecode(music): 
-    music = music.replace('C#', 'c')
-    music = music.replace('D#', 'd')
-    music = music.replace('F#', 'f')
-    music = music.replace('G#', 'g')
-    music = music.replace('A#', 'a')    
-    return music
+from itertools import cycle
 
-def cal_time(time1, time2):
-    start = int(time1.split(":")[0]) * 60 + int(time1.split(":")[1])
-    end = int(time2.split(":")[0]) * 60 + int(time2.split(":")[1])
-    return (end-start)
+def changecode(music_): 
+    music_ = music_.replace('C#', 'c')
+    music_ = music_.replace('D#', 'd')
+    music_ = music_.replace('F#', 'f')
+    music_ = music_.replace('G#', 'g')
+    music_ = music_.replace('A#', 'a')    
+    return music_
 
 def solution(m, musicinfos):
-    m = changecode(m)
-
     music_dict = dict()
     for i in range(len(musicinfos)):
-        start , end , title, melody = musicinfos[i].split(',')
-        dt = cal_time(start, end)
-        melody = changecode(melody)
+        musicinfos[i] = musicinfos[i].split(',')
+        dt = ((int(musicinfos[i][1][:2]) * 60 + int(musicinfos[i][1][3:])) - ((int(musicinfos[i][0][:2]) * 60 + int(musicinfos[i][0][3:]))))
 
-        iteration, mod = divmod(dt, len(melody))
+        cycle_list = []
+        cnt = 0
+        for _ in cycle(list(musicinfos[i][3])):
+            cycle_list.append(_)
+            cnt +=1
+            if cnt == dt:
+                break
 
-        melody_cycle = melody * iteration + melody[:mod]
+        cycle_list = changecode(''.join(cycle_list))
 
-        music_dict[title] = (melody_cycle, dt)
-    
-    hubo = []
+        music_dict[musicinfos[i][2]] = cycle_list
+
+    m = changecode(m)
+
     for key,value in music_dict.items():
-        if m in value[0]:
-            hubo.append([key,*value])
+        if m in value:
+            return key
 
-    hubo.sort(key = lambda x : x[2] ,reverse =True)
-
-    if len(hubo) == 0:
-        return "(None)"
     else:
-        return hubo[0][0]
- 
+        return "(None)"
