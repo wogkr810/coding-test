@@ -25,7 +25,6 @@ def solution(jobs):
             gt_time = tmp_list.pop(0)
             time = gt_time[1][0]
             time += gt_time[1][1]
-            # res.append(time-gt_time[1][0])
             res.append(gt_time[1][1])
         for _ in tmp_list:
             heappush(heap,_)
