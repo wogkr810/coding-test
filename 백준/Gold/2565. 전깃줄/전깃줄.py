@@ -1,3 +1,5 @@
+import bisect
+
 N = int(input())
 arr = []
 for _ in range(N):
@@ -5,11 +7,13 @@ for _ in range(N):
 
 arr.sort(key=lambda x : x[0])
 
-dp = [1 for i in range(N)]
+dp = [arr[0][1]]
 
-for i in range(N):
-    for j in range(i):
-        if arr[i][1] > arr[j][1]:
-            dp[i] = max(dp[i], dp[j]+1)
+for i in range(1,len(arr)):
+    if dp[-1] <= arr[i][1]:
+        dp.append(arr[i][1])
+    else:
+        idx = bisect.bisect_left(dp,arr[i][1])
+        dp[idx] = arr[i][1]
 
-print(len(arr)-max(dp))
+print(N-len(dp))
