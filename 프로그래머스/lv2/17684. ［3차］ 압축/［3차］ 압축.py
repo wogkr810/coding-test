@@ -7,29 +7,22 @@ def solution(msg):
 
     for alphabet in string.ascii_uppercase:
         cnt += 1
-        msg_dict[cnt] = alphabet
+        msg_dict[alphabet] = cnt
         
-    msg = list(msg)
     res = []
+    start, end = 0,len(msg)
 
-    while msg:
-        flag = True
-
-        for j in range(len(msg),0,-1):
-            if not flag:
+    while start < end:
+        for j in range(end,0,-1):
+            tmp_msg = msg[start:j]
+            if tmp_msg in msg_dict.keys():
+                res.append(msg_dict[tmp_msg])
+                if j != end:
+                    if (tmp_msg + msg[j]) not in msg_dict.keys():
+                        cnt += 1
+                        msg_dict[tmp_msg + msg[j]] = cnt
                 break
-            tmp_msg = ''.join(msg[:j])
-            for key,value in msg_dict.items():
-                if tmp_msg == value:
-                    res.append(key)
-                    flag = False
-                    if j != len(msg):
-                        if (tmp_msg + msg[j]) not in msg_dict.values():
-                            cnt += 1
-                            msg_dict[cnt] = tmp_msg + msg[j]
-                    break
 
-        for _ in range(len(tmp_msg)):
-            msg.pop(0)
-
+        start += len(tmp_msg)
+        
     return res
