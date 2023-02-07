@@ -14,6 +14,8 @@ def solution(n, t, m, p):
     res = '0'
     for i in range(1,1000*100):
         res += make_k_jinsu(i,n)
+        if len(res) >= t*m:
+            break
         
     ans = ''
     for i in range(p-1,t*m,m):
