@@ -1,4 +1,4 @@
-hex_dict = {"10":'A', "11":"B", "12":"C", "13":"D", "14":"E","15":"F"}
+# hex_dict = {"10":'A', "11":"B", "12":"C", "13":"D", "14":"E","15":"F"}
 
 def make_k_jinsu(n,k):
     res = ''
@@ -11,6 +11,8 @@ def make_k_jinsu(n,k):
     return res[::-1]
 
 def solution(n, t, m, p):
+    global hex_dict
+    hex_dict = {"10":'A', "11":"B", "12":"C", "13":"D", "14":"E","15":"F"}
     res = '0'
     for i in range(1,1000*100):
         res += make_k_jinsu(i,n)
