@@ -17,12 +17,10 @@ def dfs(start):
 visited = [False] * N
 dfs(plan[0])
 
-if len(set(plan)) == 1:
-    print("YES")
+
+for i in range(len(plan)):
+    if not visited[plan[i]]:
+        print("NO")
+        break
 else:
-    for i in range(len(plan)):
-        if not visited[plan[i]]:
-            print("NO")
-            break
-    else:
-        print("YES")
+    print("YES")
