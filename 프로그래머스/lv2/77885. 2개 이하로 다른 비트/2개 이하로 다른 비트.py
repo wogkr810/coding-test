@@ -1,10 +1,10 @@
-def solution(numbers):
-    def change_bin(input):
-        if input == '0':
-            return '1'
-        else:
-            return '0'
+def change_bin(input):
+    if input == '0':
+        return '1'
+    else:
+        return '0'
 
+def solution(numbers):
     res = []
     for number in numbers:
         if number % 2 == 0:
