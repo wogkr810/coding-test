@@ -1,11 +1,3 @@
-'''
-1 : 1
-2 : 2
-3 : 3
-4 : 5
-
-'''
-
 def solution(n):
     dp = [1,2]
     for i in range(n-2):
