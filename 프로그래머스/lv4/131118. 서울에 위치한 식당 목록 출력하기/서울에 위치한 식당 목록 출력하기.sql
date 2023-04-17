@@ -1,0 +1,10 @@
+-- 코드를 입력하세요
+# 서울에 위치
+# 식당 ID, 식당 이름, 음식 종류, 즐겨찾기 수, 주소, 리뷰 평균 점수
+# 리뷰 평균점수는 소수점 세번 째 자리 반올림
+# 평균점수 기준 내림차순, 즐겨찾기수 내림차순
+
+SELECT DISTINCT(R.REST_ID), R.REST_NAME, R.FOOD_TYPE, R.FAVORITES, R.ADDRESS, S.SCORE
+FROM REST_INFO AS R JOIN (SELECT REST_ID, ROUND(AVG(REVIEW_SCORE),2) AS SCORE FROM REST_REVIEW GROUP BY REST_ID) AS S ON R.REST_ID = S.REST_ID
+WHERE R.ADDRESS LIKE '서울%'
+ORDER BY SCORE DESC, FAVORITES DESC
