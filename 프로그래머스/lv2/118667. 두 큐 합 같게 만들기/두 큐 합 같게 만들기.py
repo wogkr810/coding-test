@@ -1,13 +1,9 @@
 from collections import deque
 
 def solution(queue1, queue2):
-    queue1 = deque(queue1)
-    queue2 = deque(queue2)
-
-    one_sum = sum(queue1)
-    two_sum = sum(queue2)
-    one_len = len(queue1)
-    two_len = len(queue2)
+    queue1, queue2 = deque(queue1), deque(queue2)
+    one_sum, two_sum = sum(queue1), sum(queue2)
+    one_len , two_len = len(queue1) , len(queue2)
 
     if (one_sum + two_sum) % 2 != 0:      # 모든 수의 합이 홀수면 안됨.
         return -1
