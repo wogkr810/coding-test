@@ -1,34 +1,37 @@
 import sys
-N, M = map(int,sys.stdin.readline().split())
-arr = []
-for _ in range(M):
-    arr.append(list(map(int,sys.stdin.readline().split())))
+input = sys.stdin.readline
 
-parent_table = [0] + [i for i in range(1,N+1)]
+N, M = map(int,input().split())
 
+def find_parent(parent, x):
+    if parent[x] != x:
+        parent[x] = find_parent(parent, parent[x])
+    return parent[x]
 
-def find_parent(parent_table,node):
-    if parent_table[node] != node:
-        parent_table[node] = find_parent(parent_table, parent_table[node])
-    return parent_table[node]
-        
-def union_parent(parent_table,x,y):
-    x = find_parent(parent_table , x)
-    y = find_parent(parent_table , y)
-    if x < y:
-        parent_table[y] = x
+def union_parent(parent, a, b):
+    a = find_parent(parent, a)
+    b = find_parent(parent, b)
+    if a < b:
+        parent[b] = a
     else:
-        parent_table[x] = y
+        parent[a] = b
 
-arr.sort(key = lambda x :x[2])
+parent = [0] + [i for i in range(1, N+1)]
+edges = []
+res = 0
 
-cnt = 0
-line_cnt = 0
-for i in range(len(arr)):
-    if find_parent(parent_table,arr[i][0]) != find_parent(parent_table,arr[i][1]):
-        line_cnt += 1
-        if line_cnt <= (N-2):
-            cnt += arr[i][2]
-        union_parent(parent_table,arr[i][0],arr[i][1])
+for _ in range(M):
+    a, b, cost = map(int,input().split())
+    edges.append((cost, a, b))
 
-print(cnt)
+edges.sort()
+last = 0
+
+for edge in edges:
+    cost , a, b = edge
+    if find_parent(parent, a) != find_parent(parent, b):
+        union_parent(parent, a, b)
+        res += cost
+        last = cost
+
+print(res - last)
