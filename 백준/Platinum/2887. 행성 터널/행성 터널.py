@@ -1,49 +1,46 @@
 import sys
 
-N = int(sys.stdin.readline())
-arr = []
-x_list = []
-y_list = []
-z_list = []
-for i in range(N):
-    x, y, z = map(int,sys.stdin.readline().split())
-    arr.append([i+1,x, y ,z])
-    x_list.append([i+1,x])
-    y_list.append([i+1,y])
-    z_list.append([i+1,z])
+input = sys.stdin.readline
 
-x_list.sort(key=lambda x : x[1])
-y_list.sort(key=lambda x : x[1])
-z_list.sort(key=lambda x : x[1])
+N = int(input())
 
-planet = []
-for j in range(1,N):
-    planet.append([x_list[j-1][0],x_list[j][0],abs(x_list[j-1][1]-x_list[j][1])])
-    planet.append([y_list[j-1][0],y_list[j][0],abs(y_list[j-1][1]-y_list[j][1])])
-    planet.append([z_list[j-1][0],z_list[j][0],abs(z_list[j-1][1]-z_list[j][1])])
+plan = []
+for i in range(1, N+1):
+    plan.append([i] + list(map(int,input().split())))
 
-planet.sort(key=lambda x: x[2])
+x_list = sorted(plan, key = lambda x : x[1])
+y_list = sorted(plan, key = lambda y : y[2])
+z_list = sorted(plan, key = lambda z : z[3])
 
+edges = set()
+for i in range(N-1):
+    edges.add((x_list[i][0], x_list[i+1][0], abs(x_list[i][1] - x_list[i+1][1])))
+    edges.add((y_list[i][0], y_list[i+1][0], abs(y_list[i][2] - y_list[i+1][2])))
+    edges.add((z_list[i][0], z_list[i+1][0], abs(z_list[i][3] - z_list[i+1][3])))
 
-parent = [i for i in range(N+1)]
+edges = sorted(edges, key = lambda x : x[2])
+
+parent = [0] + [i for i in range(1,N+1)]
+
 def find_parent(parent, x):
     if parent[x] != x:
         parent[x] = find_parent(parent, parent[x])
     return parent[x]
 
-def union(parent, x, y):
-    x = find_parent(parent,x)
-    y = find_parent(parent,y)
-    if x < y:
-        parent[y] = x
+def union_parent(parent, a, b):
+    a = find_parent(parent, a)
+    b = find_parent(parent, b)
+    if a < b:
+        parent[b] = a
     else:
-        parent[x] = y
+        parent[a] = b
 
-cnt = 0
-for i in planet:
-    a, b, c = i
-    if find_parent(parent,a) != find_parent(parent,b):
-        cnt += c
-        union(parent,a,b)
+res = 0
 
-print(cnt)
+for edge in edges:
+    a, b, cost = edge
+    if find_parent(parent, a) != find_parent(parent, b):
+        union_parent(parent, a, b)
+        res += cost
+
+print(res)
