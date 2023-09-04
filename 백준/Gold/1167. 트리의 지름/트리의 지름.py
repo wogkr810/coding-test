@@ -1,6 +1,6 @@
-from collections import deque
 import sys
 input = sys.stdin.readline
+sys.setrecursionlimit(10**9)
 
 N = int(input())
 graph = [[] for _ in range(N+1)]
@@ -16,30 +16,21 @@ for _ in range(N):
         graph[v].append([root,cost])
 
 
-def bfs(start,visited):
-    q = deque([[start,0]])
-    visited[start] = 1
+def dfs(v,cost):
+    for a,b in graph[v]:
+        if distance[a] == -1:
+            distance[a] = cost + b
+            dfs(a,cost+b)
 
-    while q:
-        v, cost = q.popleft()
-        for a,b in graph[v]:
-            if not visited[a]:
-                visited[a] += (b+visited[v])
-                q.append([a,b])
-		
-    max_value, max_idx = -1, -1
-    for i in range(len(visited)):
-            if visited[i] >= max_value:
-                    max_value = visited[i]
-                    max_idx = i		
+distance = [-1] * (N+1)
+distance[1] = 0
+dfs(1,0)
 
-    # max_value = max(visited)
-    # max_idx = visited.index(max_value)
-    return max_value, max_idx
+max_value = max(distance)
+max_idx = distance.index(max_value)
 
-value, idx = bfs(1,[0] * (N+1))
-ans, idx_2 = bfs(idx, [0] * (N+1))
+distance = [-1] * (N+1)
+distance[max_idx] = 0
+dfs(max_idx,0)
 
-print(ans-1)
-
-    
+print(max(distance))
