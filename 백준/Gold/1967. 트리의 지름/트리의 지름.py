@@ -20,9 +20,15 @@ def bfs(start,visited):
             if not visited[a]:
                 visited[a] += (b+visited[v])
                 q.append([a,b])
+		
+    max_value, max_idx = -1, -1
+    for i in range(len(visited)):
+            if visited[i] >= max_value:
+                    max_value = visited[i]
+                    max_idx = i		
 
-    max_value = max(visited)
-    max_idx = visited.index(max_value)
+    # max_value = max(visited)
+    # max_idx = visited.index(max_value)
     return max_value, max_idx
 
 value, idx = bfs(1,[0] * (N+1))
