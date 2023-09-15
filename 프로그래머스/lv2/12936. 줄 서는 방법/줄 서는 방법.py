@@ -17,7 +17,7 @@ def solution(n, k):
         n -= 1
         k = b
 
-        if n == 1:
+        if n == 2:
             break
 
     res.extend(list(permutations(num_list))[b-1])
