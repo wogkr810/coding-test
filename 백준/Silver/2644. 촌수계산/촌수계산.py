@@ -1,36 +1,26 @@
-from collections import defaultdict
-import sys
-sys.setrecursionlimit(10000)
-
 N = int(input())
-X, Y = map(int,input().split())
-T = int(input())
-arr = []
-for _ in range(T):
-    arr.append(list(map(int,input().split())))
+x, y = map(int,input().split())
+M = int(input())
+chon = [[] for _ in range(N+1)]
+for _ in range(M):
+    a, b = map(int,input().split())
+    chon[a].append(b)
+    chon[b].append(a)
 
-graph = defaultdict(list)
 visited = [False] * (N+1)
+cnt = [0] * (N+1)
 
-for a,b in arr:
-    graph[a].append(b)
-    graph[b].append(a)
-
-flag = True
-
-def DFS(start,end,cnt):
-    global flag
-    if start == end:
-        print(cnt)
-        flag = False
-        return 
+def dfs(start, count):
     visited[start] = True
-    for v in graph[start]:
-        if not visited[v]:
-            visited[v] = True
-            DFS(v,end,cnt+1)
+    cnt[start] = count 
 
-DFS(X,Y,0)
-if flag:
+    for i in chon[start]:
+        if not visited[i]:
+            dfs(i, count+1)
+
+dfs(x,0)
+
+if cnt[y] == 0:
     print(-1)
-            
+else:
+    print(cnt[y])
