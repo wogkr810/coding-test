@@ -26,6 +26,6 @@ def solution(queue1, queue2):
             two_sum -= now
             cnt += 1
         
-        if cnt >= (n+m) * 2:
+        if cnt >= (n+m) * 1.5:
             return -1
         
