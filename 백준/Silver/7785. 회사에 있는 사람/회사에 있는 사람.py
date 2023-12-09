@@ -1,4 +1,8 @@
 from collections import defaultdict
+import sys
+
+input = sys.stdin.readline
+
 N = int(input())
 people = defaultdict(str)
 
